@@ -1,47 +1,39 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
-#include "Skill.hpp"
+#ifndef ENEMY_HPP
+#define ENEMY_HPP
 #include <ostream>
-#include <iostream>
 #include <string>
 #include <vector>
+#include <iostream>
+#include "Skill.hpp"
 
-class Enemy;
+class Player;
 
-class Player {
+class Enemy {
+        std::string name;
         int level;
         int max_hp;
         int hp;
-        int phy_dmg;
-        int max_mp;
         int mp;
-        int ma_dmg;
+        int dmg;
         int armor;
         int resistance;
-        int max_exp;
         int exp;
         std::vector<Skill> skills;
 
     public:
-        Player(int level);
+        Enemy(const std::string &name, int level, int max_hp, int hp, int mp, int dmg, int armor, int resistance, int exp, const std::vector<Skill> &skills);
         bool isDead() const;
-        void heal(int points);
-        void attack(Enemy &enemy) const;
-        void levelup();
-        int getLevel() const;
+        std::string getName() const;
         int getHP() const;
-        int getMP() const;
         int getMaxHP() const;
-        int getMaxMP() const;
         int getArmor() const;
         int getResistance() const;
-        int getMaxEXP() const;
         int getEXP() const;
         void setHP(int value);
         void setMP(int value);
         void setArmor(int value);
         void setResistance(int value);
-        void setEXP(int value);
-};
+        void attack(Player& player) const;
+    };
 
 #endif
