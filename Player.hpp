@@ -30,6 +30,7 @@ class Player {
         void levelup();
         int getLevel() const;
         int getHP() const;
+        int getPdamage() const;
         int getMP() const;
         int getMaxHP() const;
         int getMaxMP() const;

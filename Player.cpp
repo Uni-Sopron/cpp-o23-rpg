@@ -22,8 +22,11 @@ void Player::heal(int points) {
 }
 
 void Player::attack(Enemy& enemy) const {
+    int damage;
+    damage = (enemy.getHP() - phy_dmg * (enemy.getArmor() / 100));
     if (!isDead()) {
-        enemy.setHP(enemy.getHP() - phy_dmg * (enemy.getArmor() / 100));
+        enemy.setHP(damage);
+        std::cout << "You deal " << (phy_dmg * (enemy.getArmor() / 100)) << " damage!\n";
     }
 }
 void Player::levelup() {
@@ -48,6 +51,10 @@ int Player::getLevel() const
 int Player::getHP() const
 {
     return hp;
+}
+int Player::getPdamage() const
+{
+    return phy_dmg;
 }
 int Player::getMP() const
 {

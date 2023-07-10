@@ -52,7 +52,10 @@
             resistance = value;
         }
         void Enemy::attack(Player& player) const {
+            int damage;
+            damage = (player.getHP() - dmg * (player.getArmor() / 100));
         if (!isDead()) {
-            player.setHP(player.getHP() - dmg * (player.getArmor() / 100));
+            player.setHP(damage);
+            std::cout << "You take " << (dmg * (player.getArmor() / 100)) << " damage!\n";
         }
 };
